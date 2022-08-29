@@ -42,7 +42,20 @@ const Login = (props: IProps) => {
       });
   };
   //登录按钮
-  const handleLogin = () => {};
+  const handleLogin = () => {
+    request
+      .post('/api/user/login', {
+        ...form,
+      })
+      .then((res: any) => {
+        if (res?.code === 0) {
+          //登录成功
+          onClose && onClose();
+        } else {
+          message.error(res?.msg || '未知错误');
+        }
+      });
+  };
   //第三方Github登录
   const handleAuthGithub = () => {};
   //监听表单事件
