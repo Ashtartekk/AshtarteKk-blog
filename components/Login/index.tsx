@@ -46,10 +46,11 @@ const Login = (props: IProps) => {
     request
       .post('/api/user/login', {
         ...form,
+        identity_type: 'phone',
       })
       .then((res: any) => {
         if (res?.code === 0) {
-          //登录成功
+          // 登录成功
           onClose && onClose();
         } else {
           message.error(res?.msg || '未知错误');

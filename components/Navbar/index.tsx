@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 import { Button } from 'antd';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import Login from 'pages/Login';
+import Login from 'components/Login';
 
 const Navbar: NextPage = () => {
   const { pathname } = useRouter();
