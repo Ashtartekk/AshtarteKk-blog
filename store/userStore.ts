@@ -4,6 +4,7 @@ export type IUserInfo = {
   avatar?: string,
 };
 
+//相当于vuex
 export interface IUserStore {
   userInfo: IUserInfo;
   serUserInfo: (value: IUserInfo) => void;
