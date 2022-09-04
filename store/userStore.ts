@@ -2,12 +2,13 @@ export type IUserInfo = {
   userId?: number | null,
   nickname?: string,
   avatar?: string,
+  id?: number,
 };
 
-//相当于vuex
 export interface IUserStore {
   userInfo: IUserInfo;
-  serUserInfo: (value: IUserInfo) => void;
+  // eslint-disable-next-line no-unused-vars
+  setUserInfo: (value: IUserInfo) => void;
 }
 
 const userStore = (): IUserStore => {

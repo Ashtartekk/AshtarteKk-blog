@@ -3,6 +3,8 @@ import { ChangeEvent, useState } from 'react';
 import CountDown from 'components/CountDown';
 import { message } from 'antd';
 import request from 'service/fetch';
+import { useStore } from 'store/index';
+import { observer } from 'mobx-react-lite';
 
 interface IProps {
   isShow: boolean;
@@ -10,13 +12,13 @@ interface IProps {
 }
 
 const Login = (props: IProps) => {
+  const store = useStore();
   const { isShow = false, onClose } = props;
   const [isShowVerifyCode, setIsShowVerifyCode] = useState(false);
   const [form, setForm] = useState({
     phone: '', //手机号
     verify: '', //验证码
   });
-
   //弹窗关闭
   const handleClose = () => {
     onClose && onClose(); //相当于执行了Navbar的handleClose
@@ -51,6 +53,8 @@ const Login = (props: IProps) => {
       .then((res: any) => {
         if (res?.code === 0) {
           // 登录成功
+          store.user.setUserInfo(res?.data);
+          console.log('store=>', store);
           onClose && onClose();
         } else {
           message.error(res?.msg || '未知错误');
