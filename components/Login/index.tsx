@@ -61,8 +61,18 @@ const Login = (props: IProps) => {
         }
       });
   };
+
+  //client-id:4dd020c6824aa6b2b454
+  //client-secret:b78606cd20d5d4dc8f554fa315abeef1690705e2
+
   //第三方Github登录
-  const handleAuthGithub = () => {};
+  const handleAuthGithub = () => {
+    const githubClientid = '4dd020c6824aa6b2b454';
+    const redirectUri = 'http://localhost:3000/api/oauth/redirect';
+    window.open(
+      `https://github.com/login/oauth/authorize?client_id=${githubClientid}&redirect_uri=${redirectUri}`
+    );
+  };
   //监听表单事件
   const handleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -125,4 +135,4 @@ const Login = (props: IProps) => {
   ) : null;
 };
 
-export default Login;
+export default observer(Login);
