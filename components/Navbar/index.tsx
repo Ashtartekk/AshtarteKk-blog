@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { navs } from './config';
 import Link from 'next/link';
 import styles from './index.module.scss';
-import { Button, Avatar, Dropdown, Menu } from 'antd';
+import { Button, Avatar, Dropdown, Menu, message } from 'antd';
 import { LoginOutlined, HomeOutlined } from '@ant-design/icons';
 import { useStore } from 'store/index';
 import { useRouter } from 'next/router';
@@ -14,11 +14,17 @@ import request from 'service/fetch';
 const Navbar: NextPage = () => {
   const store = useStore();
   const { userId, avatar } = store.user.userInfo;
-  const { pathname } = useRouter();
+  const { pathname, push } = useRouter();
   //定义isShowLogin变量，setIsShowLogin是修改变量的方法
   const [isShowLogin, setIsShowLogin] = useState(false);
   //跳转到写文章页面
-  const handleGotoEditorPage = () => {};
+  const handleGotoEditorPage = () => {
+    if (userId) {
+      push('/editor/new');
+    } else {
+      message.warning('请先登录');
+    }
+  };
   //打开登录弹窗
   const handleLogin = () => {
     setIsShowLogin(true);
@@ -28,7 +34,9 @@ const Navbar: NextPage = () => {
     setIsShowLogin(false);
   };
   //进入个人主页
-  const handleGotoPersonalPage = () => {};
+  const handleGotoPersonalPage = () => {
+    push(`/user/${userId}`);
+  };
   //退出登录
   const handleLogout = () => {
     request.post('/api/user/logout').then((res: any) => {
