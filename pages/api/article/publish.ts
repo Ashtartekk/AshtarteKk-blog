@@ -1,12 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { withIronSessionApiRoute } from 'iron-session/next';
 import { ironOptions } from 'config/index';
-import { prepareConnection } from 'db/index';
-import { Article, User } from 'db/entity/index';
 import { ISession } from 'pages/api/index';
+import { prepareConnection } from 'db/index';
+import { User, Article } from 'db/entity/index';
 import { EXCEPTION_ARTICLE } from 'pages/api/config/code';
-// import { Cookie } from 'next-cookie';
-// import { setCookie } from 'utils/index';
 
 export default withIronSessionApiRoute(publish, ironOptions);
 
@@ -34,9 +32,6 @@ async function publish(req: NextApiRequest, res: NextApiResponse) {
   }
 
   const resArticle = await articleRepo.save(article);
-
-  console.log('user=>>', user);
-  console.log('article=>>', article);
 
   if (resArticle) {
     res.status(200).json({ data: resArticle, code: 0, msg: '发布成功' });
