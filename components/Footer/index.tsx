@@ -1,7 +1,12 @@
-import type { NextPage } from "next"
+import type { NextPage } from 'next';
+import styles from './index.module.scss';
 
-const Footer: NextPage = ()=>{
-  return <div>我是页脚</div>
-}
+const Footer: NextPage = () => {
+  return (
+    <div className={styles.footer}>
+      <p>AshtarteKk -- Blog</p>
+    </div>
+  );
+};
 
 export default Footer;
