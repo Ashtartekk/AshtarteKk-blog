@@ -4,4 +4,12 @@ export const EXCEPTION_ARTICLE = {
     code: 2001,
     msg: '发布文章失败',
   },
+  UPDATE_FAILED: {
+    code: 2002,
+    msg: '更新文章失败',
+  },
+  NOT_FOUND: {
+    code: 2003,
+    msg: '更新文章失败',
+  },
 };

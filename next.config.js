@@ -2,9 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  images:{
-    domains:['peizhiyuming.com']
-  }
 }
 
 const removeImports = require('next-remove-imports')
