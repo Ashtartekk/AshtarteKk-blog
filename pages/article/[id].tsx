@@ -93,7 +93,7 @@ const ArticleDetail = (props: IProps) => {
               <div>
                 {format(new Date(article?.update_time), 'yyyy-MM-dd hh:mm:ss')}
               </div>
-              <div>阅读  {article?.views}</div>
+              <div>阅读 {article?.views}</div>
               {Number(loginUserInfo?.userId) === Number(id) && (
                 <Link href={`/editor/${article?.id}`}>编辑</Link>
               )}
