@@ -13,3 +13,10 @@ export const EXCEPTION_ARTICLE = {
     msg: '更新文章失败',
   },
 };
+
+export const EXCEPTION_COMMENT = {
+  PUBLISH_FAILED: {
+    code: 4001,
+    msg: '发表失败',
+  },
+};

@@ -1,6 +1,6 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Article } from './article'
 import { User } from './user'
-import { Article } from './article';
 
 @Entity({name: 'comments'})
 export class Comment extends BaseEntity {
@@ -16,11 +16,11 @@ export class Comment extends BaseEntity {
   @Column()
   update_time!: Date;
 
-  @ManyToOne(()=>User,{
-    cascade:true
-  })
+  @ManyToOne(() => User)
+  @JoinColumn({name: 'user_id'})
+  user!: User;
 
-  @ManyToOne(()=>Article)
-  @JoinColumn({name:'article_id'})
-  article!:Article
+  @ManyToOne(() => Article)
+  @JoinColumn({name: 'article_id'})
+  article!: Article;
 }
