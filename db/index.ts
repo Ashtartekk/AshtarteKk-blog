@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import { getConnection, Connection, createConnection } from 'typeorm';
-import { User, UserAuth, Article, Comment } from './entity/index';
+import { Connection, getConnection, createConnection } from 'typeorm';
+import { User, UserAuth, Article, Comment, Tag } from './entity/index';
 
 const host = process.env.DATABASE_HOST;
 const port = Number(process.env.DATABASE_PORT);
@@ -19,6 +19,7 @@ export const prepareConnection = () => {
       } catch (error) {
         console.log(error);
       }
+
       const connection = await createConnection({
         type: 'mysql',
         host,
@@ -26,12 +27,14 @@ export const prepareConnection = () => {
         username,
         password,
         database,
-        entities: [User, UserAuth, Article, Comment],
+        entities: [User, UserAuth, Article, Comment, Tag],
         synchronize: false,
         logging: true,
       });
+
       return connection;
     })();
   }
+
   return connectionReadyPromise;
 };
