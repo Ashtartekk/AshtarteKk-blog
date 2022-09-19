@@ -6,8 +6,6 @@ import { useStore } from 'store/index';
 import request from 'service/fetch';
 import styles from './index.module.scss';
 
-const { TabPane } = Tabs;
-
 interface IUser {
   id: number;
   nickname: string;
