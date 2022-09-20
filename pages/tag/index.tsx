@@ -97,7 +97,7 @@ const Tag = () => {
       {
         label: `全部标签`,
         key: 'all',
-        children: <div  className={styles.tags}>
+        children: <div className={styles.tags}>
         {
             allTags?.map(tag => (
               <div key={tag?.title} className={styles.tagWrapper}>
